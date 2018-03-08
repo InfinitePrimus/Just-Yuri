@@ -1,3 +1,6 @@
+$ karma = 0
+$ sanity = 0
+
 [player]default persistent.monikatopics = []
 default persistent.monika_reload = 0
 default persistent.tried_skip = None
@@ -662,12 +665,12 @@ menu:
         jump ugly
 label pretty:
     #Decreases insanity points by 2.
-    #Karma +2
+    karma =+ 2
     y +A0b "O-Oh, thank you. I’d like to think so too… heh…"
     return
 label ugly;
     #Increases insanity points by 1.
-    #Karma -2
+    karma =- 2
     y _A0d "O-Oh… I see…"
     return
 
@@ -728,7 +731,7 @@ label touch_yes:
     y _A0b "I… Alright, [player]. I’ll try to be strong for you.
     y +A0b "You’re… You’re always so good to me, [player].”
     y "I can name quite a few things I don’t like about myself, but I must be a pretty great person to deserve someone like you.”
-    #Karma +1
+    karma =+ 1
     return
 label touch_no:
     mc "But the truth is, I never really was anywhere near your reach.”
@@ -736,7 +739,8 @@ label touch_no:
     mc "You’re actually a little bit freaky sometimes, y’know?”
     y =D1d "O-Oh… so, that’s how you feel, huh?”
     y "Sorry… I guess I’ll try not to bring this up so often.”
-    #Sanity and Karma -2, -3 if you had low Karma.
+    karma =- 2
+    sanity =-2
     return
 
 Idle_15: #(Best Girl)
@@ -806,12 +810,13 @@ label dont_mind18:
     #"I smile reassuringly.”
     "Yuri sheds a sigh of relief and smiles.”
     y +D0b "T-Thank you, [player].”
-    #Insanity increases by 1, Karma increases by 2.
+    sanity=-1 
+    karma=+2
     return
 label no_response18:
     "Yuri slightly shakes her head and looks downcast.”
     y =A1d"I-I-I’m sorry for making you uncomfortable, [player]. I’ll drop the topic.”
-    #Karma drops by 1.
+    karma=-1
     return
 label be_yourself18:
     y _A0c "O-one thing?! Oh no…”
@@ -841,7 +846,8 @@ label be_yourself18:
     y +A0b "You’re absolutely right. I’ll make you that promise, (mc/user name). No matter what it takes, I’ll… we’ll, beat that side of me. Together.”
     "You have taken the first steps to helping Yuri defeat her darker side and learn to accept herself.”
     "...What the heck was that thought I had just now?”
-    #Karma +2  and Insanity -1
+    karma=+2 
+    sanity=-1
     y"I swear I’ll never be able to repay you for all you do for me.”
     y"If you have any demons, you’d better believe that I’m standing by you to beat them too.”
 
@@ -929,14 +935,16 @@ Idle_22: # (Why choose me?)
     #"Yuri looks away, clearly flustered.”
     mc "Yuri, don’t be afraid to ask.”
     mc "You can talk to me about anything. Never be afraid to come to me with what’s on your mind.”
-    #+ 0.5 Karma and sanity
+    karma=+0.5
+    sanity=+0.5
     y "I… you’re right. You’re the only person I feel so safe around, [player].”
     y "Like as much as I’m afraid of sounding ridiculous or unlikeable, I can just be myself. Because I know you love me.”
     #"Yuri smiles.”
     mc "Go on Yuri, just say it then.”
-    #- 0.5 karma
+    karma=-0.5
     mc "Say it, don’t say it, it doesn’t matter to me. I don’t care.”
-    #- 0.5 karma and sanity
+    karma=-0.5
+    sanity=-0.5
     y +A0b "I… well… I’m really s-sorry to bother you with this.”
     y _-A0d "I just… Let me just get it over with so I… d-don’t bother you anymore… I’m sorry…”
     #########
@@ -964,7 +972,8 @@ Idle_22: # (Why choose me?)
     y +-B0b"Sometimes even I don’t know what to say. But I think that expresses how I feel perfectly.”
     y "I love you, [player].”
     mc "I love you too, Yuri.”
-    + 2 Karma and Sanity
+   karma=+2
+    sanity=+2
     mc "I just did. I’m not really sure why.”
     y _-A1d"What… did you… not even have a reason?”
     y --D0d"Did you not even choose me for me?!”
@@ -973,20 +982,20 @@ Idle_22: # (Why choose me?)
     y "Did you even care? Did it even mean anything to you at all?”
     y =-D1d"Just… forget it…”
     "Yuri looks away, clearly upset and saddened.”
-    - 2 Karma and Sanity
+    karma=-2
+    sanity=-2
 
 Idle_23: # (Diet)
 y +A0b"You’d really be surprised how much you can learn when you have infinite free time.”
 y "All I’ve been doing is reading and trying to improve what I can do in this world. And in that reading I’ve learned quite a bit.”
 y _-A0b"I’m sorry if I sound naggy when saying this, but do you eat well, [player]? Do you have a good diet?”
 mc "Yeah. I try to be healthy as much as I can.”
-Karma +1
+karma=+1
 y +-A0b"I’m so glad you’re watching your health, [player].”
 mc "I try to keep track of it… but I’m not always successful.”
-No effect on Karma
 y +-A0b"Ah, I see… Well, at least you’re looking out for yourself, darling.”
 mc "I think people should eat what they want to eat! No questions about it!”
-Karma -1
+karma=-1
 y _-A1d"Ah, I see… W-Well, that is to say…”
 y +-A0b"I might have been reading up a little too much on various medical and dieting websites, but I’m only bringing this up because I worry about you and your health.”
 y "So as silly as it sounds, for me, please try to eat at least somewhat healthy, ok? And try to fit in some kind of exercise if you can.”
